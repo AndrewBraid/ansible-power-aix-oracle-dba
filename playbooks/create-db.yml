@@ -7,7 +7,7 @@
 - name: Create a Database
   hosts: rac93                  # Target LPAR hostname defined in the inventory
   remote_user: oracle           # Oracle Database Username
-  vars_files:
-   - vars/vault.yml
+#  vars_files:
+#   - vars/vault.yml
   roles:
      - { role: oradb_create }
