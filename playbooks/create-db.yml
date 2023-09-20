@@ -5,7 +5,7 @@
 # default_dbpass: Oracle4u
 
 - name: Create a Database
-  hosts: rac93                  # Target LPAR hostname defined in the inventory
+  hosts: all                     # Target LPAR hostname defined in the inventory was rac93
   remote_user: oracle           # Oracle Database Username
 #  vars_files:
 #   - vars/vault.yml
