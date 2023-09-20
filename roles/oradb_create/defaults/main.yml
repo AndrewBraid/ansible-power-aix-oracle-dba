@@ -43,7 +43,7 @@
 # This is an example layout of a database installation
   oracle_databases:                                             # Dictionary describing the databases to be installed
         - home: dbhome_1                                             # 'Last' directory in ORACLE_HOME path (e.g /u01/app/oracle/12.1.0.2/racdb)
-          oracle_version_db: 19.3.0.0                   # Oracle version
+          oracle_version_db: 19.3.0.0.0                  # Oracle version
           oracle_home: /u01/app/oracle/product/19.0.3/dbhome_1            # Oracle Home location.
           oracle_edition: EE                                    # The edition of database-server (EE,SE,SEONE)
 #          oracle_db_name: testdb1                                 # Database name
