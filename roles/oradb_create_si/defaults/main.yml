@@ -5,7 +5,7 @@
   oracle_user_home: "/home/{{ oracle_user }}" # Home directory for oracle_user. Needed for passing in ssh-keys, profiles etc
   oracle_group: oinstall    # Primary group for oracle_user.
 
-  oracle_home_db: "{{% if oracle_home is defined %}{{ oracle_home}}{% else %}{{ oracle_base }}/{{ oracle_version_db }}/{{ home }}{% endif %}"
+  oracle_home_db: "{{% if oracle_home is defined %}{{ oracle_home}}{% else %}{{ oracle_base }}/{{ oracle_version_db }}/{{ home }}{% endif %}}"
 
   oracle_stage: /tmp # Location on the target AIX lpar to stage response files. 
   oracle_rsp_stage: "{{ oracle_stage }}/rsp"
