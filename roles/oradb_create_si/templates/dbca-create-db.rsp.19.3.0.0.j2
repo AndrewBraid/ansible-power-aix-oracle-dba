@@ -163,7 +163,7 @@ RACOneNodeServiceName={{ service_name }}
 # Default value : false
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-createAsContainerDatabase={% if is_container is defined %}{{ is_container }}{% endif %}
+#createAsContainerDatabase={% if is_container is defined %}{{ is_container }}{% endif %}
 
 #-----------------------------------------------------------------------------
 # Name          : numberOfPDBs
@@ -183,7 +183,7 @@ createAsContainerDatabase={% if is_container is defined %}{{ is_container }}{% e
 # Default value : None
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-pdbName={% if is_container and pdb_prefix is defined %}{{ pdb_prefix }}{%endif%}
+#pdbName={% if is_container and pdb_prefix is defined %}{{ pdb_prefix }}{%endif%}
 
 #-----------------------------------------------------------------------------
 # Name          : useLocalUndoForPDBs
@@ -193,7 +193,7 @@ pdbName={% if is_container and pdb_prefix is defined %}{{ pdb_prefix }}{%endif%}
 # Default value : TRUE
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-useLocalUndoForPDBs=true
+#useLocalUndoForPDBs=true
 
 #-----------------------------------------------------------------------------
 # Name          : pdbAdminPassword
@@ -203,11 +203,11 @@ useLocalUndoForPDBs=true
 # Default value : None
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-{% if dbpasswords is defined and dbpasswords[oracle_db_name]is defined and dbpasswords[oracle_db_name]['pdbadmin'] is defined%}
-pdbAdminPassword={{dbpasswords[oracle_db_name]['pdbadmin']}}
-{% else %}
-pdbAdminPassword={{default_dbpass }}
-{% endif %}
+#{% if dbpasswords is defined and dbpasswords[oracle_db_name]is defined and dbpasswords[oracle_db_name]['pdbadmin'] is defined%}
+#pdbAdminPassword={{dbpasswords[oracle_db_name]['pdbadmin']}}
+#{% else %}
+#pdbAdminPassword={{default_dbpass }}
+#{% endif %}
 
 #-----------------------------------------------------------------------------
 # Name          : nodelist
@@ -217,13 +217,13 @@ pdbAdminPassword={{default_dbpass }}
 # Default value : None
 # Mandatory     : No (Yes for RAC database-centric database )
 #-----------------------------------------------------------------------------
-{% if configure_cluster and oracle_db_type|upper != "SI" and oracle_db_type|upper != "SIFO"  and oracle_gi_cluster_type |upper == 'FLEX' %}
-nodelist={% for host in groups[hostgroup_hub] -%} {{host}} {%- if not loop.last -%} , {%- endif -%} {%- endfor %}
-{% elif configure_cluster and oracle_db_type|upper != "SI" and oracle_db_type|upper != "SIFO"  and oracle_gi_cluster_type |upper != 'FLEX' %}
-nodelist={% for host in groups[hostgroup] -%} {{host}} {%- if not loop.last -%} , {%- endif -%} {%- endfor %}
-{% else %}
-#NODELIST=
-{% endif %}
+#{% if configure_cluster and oracle_db_type|upper != "SI" and oracle_db_type|upper != "SIFO"  and oracle_gi_cluster_type |upper == 'FLEX' %}
+#nodelist={% for host in groups[hostgroup_hub] -%} {{host}} {%- if not loop.last -%} , {%- endif -%} {%- endfor %}
+#{% elif configure_cluster and oracle_db_type|upper != "SI" and oracle_db_type|upper != "SIFO"  and oracle_gi_cluster_type |upper != 'FLEX' %}
+#nodelist={% for host in groups[hostgroup] -%} {{host}} {%- if not loop.last -%} , {%- endif -%} {%- endfor %}
+#{% else %}
+##NODELIST=
+#{% endif %}
 
 #-----------------------------------------------------------------------------
 # Name          : templateName
