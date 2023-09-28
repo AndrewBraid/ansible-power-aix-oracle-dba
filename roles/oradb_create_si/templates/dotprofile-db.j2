@@ -23,7 +23,7 @@ get_sid=$(ps -ef | grep "ora_pmon_$ORACLE_DBNAME" |grep -v grep | sed 's/^.*pmon
         export LD_LIBRARY_PATH
         SQLPATH=/home/oracle/.Scripts
         export SQLPATH
-        export ORACLE_DBNAME={{ item.0.oracle_db_name }}
+        export ORACLE_DBNAME={{ oracle_db_name }}
         export ORACLE_SID=${get_sid:-$ORACLE_DBNAME}
         export NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS'
 
