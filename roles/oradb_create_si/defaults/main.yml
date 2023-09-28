@@ -1,6 +1,6 @@
   hostgroup: "{{ group_names[0] }}"
   oracle_dbca_rsp: "dbca_{{ oracle_db_name }}.rsp"        # Name of responsefile used by dbca. One per database
-  oracle_netca_rsp: "netca_{{ item.home }}_{{ listener_name_template }}.rsp"
+  oracle_netca_rsp: "netca_{{ home }}_{{ listener_name_template }}.rsp"
   oracle_user: oracle             # User that will own the Oracle Installations.
   oracle_user_home: "/home/{{ oracle_user }}" # Home directory for oracle_user. Needed for passing in ssh-keys, profiles etc
   oracle_group: oinstall    # Primary group for oracle_user.
@@ -11,7 +11,7 @@
   oracle_rsp_stage: "{{ oracle_stage }}/rsp"
   oracle_inventory_loc: /u01/app/oraInventory
   oracle_base: /u01/app/oracle
-  oracle_profile_name: ".profile_{{ item.oracle_db_name }}"       # Name of profile-file. Sets up the environment for that database. One per database
+  oracle_profile_name: ".profile_{{ oracle_db_name }}"       # Name of profile-file. Sets up the environment for that database. One per database
   oracle_dbf_dir_fs: /oradata                              # If storage_type=FS this is where the database is placed.
   oracle_reco_dir_fs: /oradata                             # If storage_type=FS this is where the fast recovery area is placed.
   oracle_dbf_dir_asm: '+DATA1'                                    # If storage_type=ASM this is where the database is placed.
@@ -23,10 +23,10 @@
   oracle_gi_cluster_type: STANDARD
   hostgroup_hub: "{{ hostgroup }}-hub"
   hostgroup_leaf: "{{ hostgroup }}-leaf"
-  create_listener: "{% if oracle_install_option_gi is defined %}False{% elif oracle_install_option_gi is undefined %}{% if item.listener_name is defined %}True{% else %}False{% endif %}{% endif %}"
-  listener_name_template: "{% if item.listener_name is defined %}{{ item.listener_name }}{% else %}{{ listener_name }}{% endif %}"
-  listener_protocols_template: "{% if item.listener_protocols is defined %}{{ item.listener_protocols }}{% else %}{{ listener_protocols }}{% endif %}"
-  listener_port_template: "{% if item.listener_port is defined %}{{ item.listener_port }}{% else %}{{ listener_port }}{% endif %}"
+  create_listener: "{% if oracle_install_option_gi is defined %}False{% elif oracle_install_option_gi is undefined %}{% if listener_name is defined %}True{% else %}False{% endif %}{% endif %}"
+  listener_name_template: "{% if listener_name is defined %}{{ listener_name }}{% else %}{{ listener_name }}{% endif %}"
+  listener_protocols_template: "{% if listener_protocols is defined %}{{ listener_protocols }}{% else %}{{ listener_protocols }}{% endif %}"
+  listener_port_template: "{% if listener_port is defined %}{{ listener_port }}{% else %}{{ listener_port }}{% endif %}"
   listener_name: ANSILIST
   listener_protocols: TCP
   listener_port: 1521
@@ -38,7 +38,7 @@
 # This example will be broken out to a passwords.yml as soon as is allowed in ansible
 
   dbca_templatename: General_Purpose.dbc
-  dbca_initParams: "{% if '19.3' in item.0.oracle_version_db %} -initParams db_name={{item.0.oracle_db_name}}{% if item.0.oracle_db_unique_name is defined %},db_unique_name={{item.0.oracle_db_unique_name}}{% endif %}{% endif %}"
+  dbca_initParams: "{% if '19.3' in oracle_version_db %} -initParams db_name={{oracle_db_name}}{% if oracle_db_unique_name is defined %},db_unique_name={{oracle_db_unique_name}}{% endif %}{% endif %}"
 
 # This is an example layout of a database installation
 #  oracle_databases:                                             # Dictionary describing the databases to be installed
