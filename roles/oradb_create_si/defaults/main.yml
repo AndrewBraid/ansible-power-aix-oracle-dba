@@ -53,7 +53,7 @@
   pdb_prefix: devpdb # Pluggable database name.
   num_pdbs: 1 # Number of pluggable databases.
   storage_type: FS                                     # Database storage to be used. ASM or FS.
-  service_name: {{oracle_db_name}}                                   # Inital service to be created.
+  service_name: "{{oracle_db_name}}"                                   # Inital service to be created.
   oracle_init_params: ""                                # Specific parameters to be set during installation. Comma-separated list
   oracle_db_mem_totalmb: 10000                          # Amount of RAM to be used for SGA + PGA
   oracle_database_type: MULTIPURPOSE                    # MULTIPURPOSE|DATA_WAREHOUSING|OLTP
