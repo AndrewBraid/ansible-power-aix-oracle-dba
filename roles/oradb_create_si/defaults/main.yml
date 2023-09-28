@@ -1,11 +1,11 @@
   hostgroup: "{{ group_names[0] }}"
-  oracle_dbca_rsp: "dbca_{{ item.0.oracle_db_name }}.rsp"        # Name of responsefile used by dbca. One per database
+  oracle_dbca_rsp: "dbca_{{ oracle_db_name }}.rsp"        # Name of responsefile used by dbca. One per database
   oracle_netca_rsp: "netca_{{ item.home }}_{{ listener_name_template }}.rsp"
   oracle_user: oracle             # User that will own the Oracle Installations.
   oracle_user_home: "/home/{{ oracle_user }}" # Home directory for oracle_user. Needed for passing in ssh-keys, profiles etc
   oracle_group: oinstall    # Primary group for oracle_user.
 
-  oracle_home_db: "{% if item.0 is defined %}{% if item.0.oracle_home is defined %}{{ item.0.oracle_home}}{% else %}{{ oracle_base }}/{{ item.0.oracle_version_db }}/{{ item.0.home }}{% endif %}{% else %}{% if item.oracle_home is defined %}{{ item.oracle_home }}{% else %}{{ oracle_base }}/{{ item.oracle_version_db }}/{{ item.home }}{% endif %}{% endif %}"
+  oracle_home_db: "{{% if oracle_home is defined %}{{ oracle_home}}{% else %}{{ oracle_base }}/{{ oracle_version_db }}/{{ home }}{% endif %}{"
 
   oracle_stage: /tmp # Location on the target AIX lpar to stage response files. 
   oracle_rsp_stage: "{{ oracle_stage }}/rsp"
@@ -16,8 +16,8 @@
   oracle_reco_dir_fs: /oradata                             # If storage_type=FS this is where the fast recovery area is placed.
   oracle_dbf_dir_asm: '+DATA1'                                    # If storage_type=ASM this is where the database is placed.
   oracle_reco_dir_asm: '+DATA1'                                   # If storage_type=ASM this is where the fast recovery area is placed
-  datafile_dest: "{% if item.0.storage_type|upper == 'FS' %}{{ oracle_dbf_dir_fs }}{% elif item.0.storage_type|upper == 'ASM' %}{{ oracle_dbf_dir_asm }}{% else %}{% endif %}"
-  recoveryfile_dest: "{% if item.0.storage_type|upper == 'FS' %}{{ oracle_reco_dir_fs }}{% elif item.0.storage_type|upper == 'ASM' %}{{ oracle_reco_dir_asm }}{% else %}{% endif %}"
+  datafile_dest: "{% if storage_type|upper == 'FS' %}{{ oracle_dbf_dir_fs }}{% elif storage_type|upper == 'ASM' %}{{ oracle_dbf_dir_asm }}{% else %}{% endif %}"
+  recoveryfile_dest: "{% if storage_type|upper == 'FS' %}{{ oracle_reco_dir_fs }}{% elif storage_type|upper == 'ASM' %}{{ oracle_reco_dir_asm }}{% else %}{% endif %}"
   configure_cluster: False   # Set it true when creating RAC database
   oracle_install_option_gi: "none"
   oracle_gi_cluster_type: STANDARD
