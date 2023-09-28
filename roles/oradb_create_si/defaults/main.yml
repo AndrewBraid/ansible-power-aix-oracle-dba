@@ -49,7 +49,7 @@
   oracle_edition: EE                                    # The edition of database-server (EE,SE,SEONE)
   oracle_db_name: testdb1                                 # Database name
   oracle_db_type: SI                                   # Type of database (RAC,RACONENODE,SI)
-  is_container: True                                    # (true/false) Is the database a container database
+  is_container: False                                    # (true/false) Is the database a container database
   pdb_prefix: devpdb # Pluggable database name.
   num_pdbs: 1 # Number of pluggable databases.
   storage_type: FS                                     # Database storage to be used. ASM or FS.
