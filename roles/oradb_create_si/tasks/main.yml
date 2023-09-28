@@ -45,7 +45,7 @@
 #       - "{{checkdbexist.results}}"
     become_user: "{{ oracle_user }}"
 #    run_once: "{{ configure_cluster}}"
-    when: item.stdout != "1" and item.state |upper == "PRESENT"
+    when: oradbcreate.stdout != "1" and oradbcreate.state |upper == "PRESENT"
     tags:
       - oradbcreate
     register: oradbcreate
@@ -80,7 +80,7 @@
 #    with_together:
 #    - "{{oracle_databases}}"
 #    - "{{dbs.results}}"
-#    when: item.0.oracle_db_type != "SI"
+#    when: oracle_db_type != "SI"
 #    tags: update_oratab
 
 #  - name: Customize oratab for autostart
