@@ -173,7 +173,7 @@ RACOneNodeServiceName={{ service_name }}
 # Default value : 0
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-#numberOfPDBs={% if is_container num_pdbs is defined %}{{ num_pdbs }}{%endif%}
+#numberOfPDBs={% if is_container and num_pdbs is defined %}{{ num_pdbs }}{%endif%}
 
 #-----------------------------------------------------------------------------
 # Name          : pdbName
