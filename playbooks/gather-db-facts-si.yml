@@ -1,0 +1,10 @@
+- hosts: localhost
+  connection: local
+  pre_tasks:
+   - name: include variables
+     include_vars:
+       dir: vars
+       extensions:
+         - 'yml'
+  roles:
+     - { role: oradb_gather_dbfacts_si }
