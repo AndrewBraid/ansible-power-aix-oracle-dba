@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: 	D-LLOY-oracle1
   connection: local
   pre_tasks:
    - name: include variables
