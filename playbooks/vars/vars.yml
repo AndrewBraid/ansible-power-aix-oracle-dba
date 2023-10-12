@@ -1,5 +1,5 @@
 hostname: all                   	# hostname of the aix lpar where the database is running.
-listener_port: 1522                         	# Database port number.
+listener_port: 1521                         	# Database port number.
 oracle_db_home: /u01/app/oracle/product/19.0.3/dbhome_1      # Oracle Instant Client path on the ansible controller.
 oracle_env:
      ORACLE_HOME: "{{ oracle_db_home }}"
