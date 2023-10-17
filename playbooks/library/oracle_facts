@@ -69,10 +69,11 @@ EXAMPLES = '''
 
 try:
     import cx_Oracle
-except ImportError:
-    cx_oracle_exists = False
-else:
-    cx_oracle_exists = True
+    #import oracledb
+#except ImportError:
+#    cx_oracle_exists = False
+#else:
+#    cx_oracle_exists = True
 
 def rows_to_dict_list(cursor):
     columns = [i[0] for i in cursor.description]
