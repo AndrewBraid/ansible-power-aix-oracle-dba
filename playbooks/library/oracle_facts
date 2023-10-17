@@ -105,8 +105,8 @@ def main():
         supports_check_mode=True
     )
     # Check for required modules
-    if not cx_oracle_exists:
-        module.fail_json(msg="The cx_Oracle module is required. 'pip install cx_Oracle' should do the trick. If cx_Oracle is installed, make sure ORACLE_HOME & LD_LIBRARY_PATH is set")
+#    if not cx_oracle_exists:
+#        module.fail_json(msg="The cx_Oracle module is required. 'pip install cx_Oracle' should do the trick. If cx_Oracle is installed, make sure ORACLE_HOME & LD_LIBRARY_PATH is set")
     # Connect to database
     hostname = module.params["hostname"]
     port = module.params["port"]
