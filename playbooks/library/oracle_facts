@@ -68,8 +68,8 @@ EXAMPLES = '''
 '''
 
 try:
-    #import cx_Oracle
-    import oracledb
+    import cx_Oracle
+    #import oracledb
 #except ImportError:
 #    cx_oracle_exists = False
 #else:
