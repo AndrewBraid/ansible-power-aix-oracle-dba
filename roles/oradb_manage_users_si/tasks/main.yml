@@ -1,0 +1,16 @@
+---
+
+- name: Manage users (cdb/pdb)
+  oracle_users_si:
+          hostname=oracle1
+          port=1521
+          service_name= {{ db_service_name }}
+          user=ansible
+          password=ansible
+          mode=sysdba
+          schema=  {{ db_oracle_user }}
+          schema_password= {{ db_oracle_user_pwd}}
+          default_tablespace=users
+          default_temp_tablespace=temp
+  environment: "{{ oracle_env }}"
+  tags: users
