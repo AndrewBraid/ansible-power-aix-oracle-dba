@@ -1,7 +1,7 @@
 ---
 
 - name: Manage users (cdb/pdb)
-  oracle_users_si:
+  oracle_user_si:
           hostname=oracle1
           port=1521
           service_name= {{ db_service_name }}
